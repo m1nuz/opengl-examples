@@ -17,8 +17,8 @@ Example 3 - Instanced cubes
 
 Screenshots
 --------
-![](https://dl.dropboxusercontent.com/u/8712341/example-450-01-preview.png)
+[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-01-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-01.png)
 
-![](https://dl.dropboxusercontent.com/u/8712341/example-450-02-preview.png)
+[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-02-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-02.png)
 
-![](https://dl.dropboxusercontent.com/u/8712341/example-450-03-preview.png)
+[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-03-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-03.png)
