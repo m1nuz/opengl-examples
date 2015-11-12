@@ -18,6 +18,10 @@ set(cpp_flags "-std=c++11 -pedantic -Wall -Wextra -Wshadow -Wpointer-arith -Wcas
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${c_flags}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${cpp_flags}")
 
+add_executable(example-450-00 WIN32 src/main.c src/example0.cpp)
+target_compile_definitions(example-450-00 PRIVATE -DAPP_TITLE="Example 0: Triangle")
+target_link_libraries(example-450-00 ${libs})
+
 add_executable(example-450-01 WIN32 src/main.c src/example1.cpp)
 target_compile_definitions(example-450-01 PRIVATE -DAPP_TITLE="Example 1: Triangles")
 target_link_libraries(example-450-01 ${libs})

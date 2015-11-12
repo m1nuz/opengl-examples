@@ -63,7 +63,7 @@ GLuint pipeline;    // program pipeline
 GLuint vs;          // vertex program
 GLuint fs;          // fragment program
 
-GLuint tex;
+GLuint tex_color;
 GLuint sampler;
 GLint loc_mvp;      // "world" matrix uniform location
 GLint loc_color;    // "color" uniform location
@@ -87,10 +87,10 @@ EXAMPLE_CALL void on_init(int w, int h, int vsync) {
 
     void *pixels = load_targa("../textures/texture_01.tga", &iformat, &format, &tw, &th);
 
-    glCreateTextures(GL_TEXTURE_2D, 1, &tex);
-    glTextureStorage2D(tex, 4, iformat, tw, th);
-    glTextureSubImage2D(tex, 0, 0, 0, tw, th, format, GL_UNSIGNED_BYTE, pixels);
-    glGenerateTextureMipmap(tex);
+    glCreateTextures(GL_TEXTURE_2D, 1, &tex_color);
+    glTextureStorage2D(tex_color, 4, iformat, tw, th);
+    glTextureSubImage2D(tex_color, 0, 0, 0, tw, th, format, GL_UNSIGNED_BYTE, pixels);
+    glGenerateTextureMipmap(tex_color);
 
     free(pixels);
 
@@ -169,7 +169,7 @@ EXAMPLE_CALL void on_cleanup(void) {
     glDeleteBuffers(1, &vbo);
     glDeleteBuffers(1, &ebo);
     glDeleteVertexArrays(1, &vao);
-    glDeleteTextures(1, &tex);
+    glDeleteTextures(1, &tex_color);
     glDeleteSamplers(1, &sampler);
     glDeleteProgram(vs);
     glDeleteProgram(fs);
@@ -217,7 +217,7 @@ EXAMPLE_CALL void on_present(int w, int h, float alpha) {
     glProgramUniform3f(fs, loc_color, 0.8, 0.9, 0.8);
 
     // bind texture and sampler to unit 0
-    glBindTextureUnit(0, tex);
+    glBindTextureUnit(0, tex_color);
     glBindSampler(0, sampler);
 
     glDrawElements(GL_TRIANGLES, CUBE_INDICES_NUM, GL_UNSIGNED_SHORT, 0);
