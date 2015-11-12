@@ -4,9 +4,8 @@
  */
 #include <SDL2/SDL_events.h>
 #include <glcore_450.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include <cstddef>
+#include "common.h"
 
 #define EXAMPLE_CALL extern "C"
 
@@ -69,6 +68,8 @@ GLint loc_mvp;      // "world" matrix uniform location
 GLint loc_color;    // "color" uniform location
 
 EXAMPLE_CALL void on_init(int w, int h, int vsync) {
+    UNUSED(w), UNUSED(h), UNUSED(vsync);
+
     // Create texture sampler
     glCreateSamplers(1, &sampler);
 
@@ -226,5 +227,5 @@ EXAMPLE_CALL void on_present(int w, int h, float alpha) {
 }
 
 EXAMPLE_CALL void on_event(SDL_Event *event) {
-
+    UNUSED(event);
 }

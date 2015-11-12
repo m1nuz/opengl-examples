@@ -4,10 +4,9 @@
  */
 #include <SDL2/SDL_events.h>
 #include <glcore_450.h>
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
 #include <cstddef>
 #include <cstdint>
+#include "common.h"
 
 #define EXAMPLE_CALL extern "C"
 
@@ -126,6 +125,8 @@ static void init_textures() {
 }
 
 EXAMPLE_CALL void on_init(int w, int h, int vsync) {
+    UNUSED(w), UNUSED(h), UNUSED(vsync);
+
     // Create texture sampler
     glCreateSamplers(1, &sampler);
 
@@ -145,12 +146,12 @@ EXAMPLE_CALL void on_init(int w, int h, int vsync) {
     glNamedBufferData(ubo, sizeof(glm::mat4) * 7, NULL, GL_STREAM_DRAW);
 
     Material materials[6] = {
-        {glm::vec4(1, 0, 0, 1), 0},
-        {glm::vec4(0, 1, 0, 1), 1},
-        {glm::vec4(0, 0, 1, 1), 2},
-        {glm::vec4(1, 1, 0, 1), 3},
-        {glm::vec4(1, 0, 1, 1), 4},
-        {glm::vec4(0, 1, 1, 1), 5},
+        {glm::vec4(1, 0, 0, 1), 0, {0}},
+        {glm::vec4(0, 1, 0, 1), 1, {0}},
+        {glm::vec4(0, 0, 1, 1), 2, {0}},
+        {glm::vec4(1, 1, 0, 1), 3, {0}},
+        {glm::vec4(1, 0, 1, 1), 4, {0}},
+        {glm::vec4(0, 1, 1, 1), 5, {0}},
     };
 
     // Create UBO for materials
@@ -287,9 +288,9 @@ EXAMPLE_CALL void on_present(int w, int h, float alpha) {
     }
 
     // Update ubo buffer with matrices
-    void *ptr = glMapNamedBufferRange(ubo, 0, sizeof(mat4) * 7, GL_MAP_WRITE_BIT);
-    memcpy(ptr, &pvm[0][0], sizeof (mat4));
-    memcpy(ptr + sizeof (mat4), models, sizeof (mat4) * 6);
+    void *ptr = glMapNamedBufferRange(ubo, 0, sizeof (mat4) * 7, GL_MAP_WRITE_BIT);
+    memcpy((char*)ptr, &pvm[0][0], sizeof (mat4));
+    memcpy((char*)ptr + sizeof (mat4), models, sizeof (mat4) * 6);
     glUnmapNamedBuffer(ubo);
 
     // Clip window
@@ -319,5 +320,5 @@ EXAMPLE_CALL void on_present(int w, int h, float alpha) {
 }
 
 EXAMPLE_CALL void on_event(SDL_Event *event) {
-
+    UNUSED(event);
 }

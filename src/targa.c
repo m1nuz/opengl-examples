@@ -35,6 +35,8 @@ struct tga_header
 };
 #pragma pack(pop, tga_header_align)
 
+void* load_targa(const char *filepath, GLuint *iformat, GLenum *format, GLsizei *width, GLsizei *height);
+
 extern void* load_targa(const char *filepath, GLuint *iformat, GLenum *format, GLsizei *width, GLsizei *height)
 {
     FILE *fp = fopen(filepath, "rb");

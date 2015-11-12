@@ -1,5 +1,6 @@
 #include <SDL2/SDL.h>
 #include <glcore_450.h>
+#include "common.h"
 
 #define SCREEN_WIDTH 1024
 #define SCREEN_HEIGHT 768
@@ -73,6 +74,8 @@ static const char *debug_severity_to_string(GLenum severity) {
 }
 
 static void APIENTRY debug_output_callback(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, const void *param) {
+    UNUSED(length), UNUSED(param);
+
     const char *sourceStr = debug_source_to_string(source);
     const char *typeStr = debug_type_to_string(type);
     const char *severityStr = debug_severity_to_string(severity);
@@ -82,6 +85,8 @@ static void APIENTRY debug_output_callback(GLenum source, GLenum type, GLuint id
 
 extern int
 main(int argc, char *argv[]) {
+    UNUSED(argc), UNUSED(argv);
+
     int width = SCREEN_WIDTH, height = SCREEN_HEIGHT;
     int vsync = 0;
 
@@ -119,6 +124,13 @@ main(int argc, char *argv[]) {
     glDebugMessageControl(GL_DONT_CARE, GL_DONT_CARE, GL_DONT_CARE, 0, NULL, GL_TRUE);
 
     glEnable(GL_DEBUG_OUTPUT);
+
+    const char *version = (const char*)glGetString(GL_VERSION);
+    const char *renderer = (const char*)glGetString(GL_RENDERER);
+    const char *vendor = (const char*)glGetString(GL_VENDOR);
+    const char *glsl_version = (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
+
+    printf("GL version: %s\nGL renderer: %s\nGL vendor: %s\nGL shading language version: %s\n", version, renderer, vendor, glsl_version);
 
     on_init(width, height, vsync);
 

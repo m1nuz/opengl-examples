@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <SDL2/SDL_events.h>
 #include <glcore_450.h>
+#include "common.h"
 
 #define EXAMPLE_CALL extern "C"
 
@@ -47,12 +48,7 @@ GLint loc_offset;   // "offset" uniform location
 GLint loc_color;    // "color" uniform location
 
 EXAMPLE_CALL void on_init(int w, int h, int vsync) {
-    const char *version = (const char*)glGetString(GL_VERSION);
-    const char *renderer = (const char*)glGetString(GL_RENDERER);
-    const char *vendor = (const char*)glGetString(GL_VENDOR);
-    const char *glsl_version = (const char*)glGetString(GL_SHADING_LANGUAGE_VERSION);
-
-    printf("GL version: %s\nGL renderer: %s\nGL vendor: %s\nGL shading language version: %s\n", version, renderer, vendor, glsl_version);    
+    UNUSED(w), UNUSED(h), UNUSED(vsync);
 
     // Create VBO
     glCreateBuffers(1, &vbo);
@@ -115,12 +111,14 @@ EXAMPLE_CALL void on_cleanup(void) {
 }
 
 EXAMPLE_CALL void on_update(float dt) {
-
+    UNUSED(dt);
 }
 
 typedef float float3[3];
 
 EXAMPLE_CALL void on_present(int w, int h, float alpha) {
+    UNUSED(alpha);
+
     float clear_color[4] = {0.4, 0.4, 0.4, 1};
 
     // Clip window
@@ -155,5 +153,5 @@ EXAMPLE_CALL void on_present(int w, int h, float alpha) {
 }
 
 EXAMPLE_CALL void on_event(SDL_Event *event) {
-
+    UNUSED(event);
 }
