@@ -42,7 +42,7 @@ const char* vertex_shader =
         "out vertex {"
         "vec3 normal;"
         "vec2 texcoord;"
-        "uint index;"
+        "flat uint index;"
         "} vs_output;"
 
         "void main () {"
@@ -71,7 +71,7 @@ const char* fragment_shader =
         "in vertex {"
         "vec3 normal;"
         "vec2 texcoord;"
-        "uint index;"
+        "flat uint index;"
         "} fs_input;"
 
         "layout (location = 0, index = 0) out vec4 frag_color;"
