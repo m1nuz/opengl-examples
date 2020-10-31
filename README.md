@@ -11,18 +11,16 @@ Examples
 --------
 Example 0 - Triangle
 
+[![](<screenshots/example1-preview.png>)](screenshots/example1.png)
+
 Example 1 - Colored triangles
+
+[![](<screenshots/example2-preview.png>)](screenshots/example2.png)
 
 Example 2 - Rotating textured cube
 
+[![](<screenshots/example3-preview.png>)](screenshots/example3.png)
+
 Example 3 - Instanced cubes
 
-Screenshots
---------
-[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-00-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-00.png)
-
-[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-01-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-01.png)
-
-[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-02-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-02.png)
-
-[![](<https://dl.dropboxusercontent.com/u/8712341/example-450-03-preview.png>)](https://dl.dropboxusercontent.com/u/8712341/example-450-03.png)
+[![](<screenshots/example4-preview.png>)](screenshots/example4.png)
